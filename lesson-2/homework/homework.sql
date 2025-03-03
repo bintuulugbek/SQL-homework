@@ -38,16 +38,34 @@ add Department varchar(50)
 
 --🟠 Medium-Level Tasks (10)
 --11.	Create a table Departments with a PRIMARY KEY on DeptID and a FOREIGN KEY referencing Employees.EmpID.
+create table Departments (DeptID int, DeptName varchar(20), constraint Pk_deptID primary key (DeptID))
+create table employees (EmpID int, Employee varchar(20), constraint Fk_EmpID foreign key(EmpID) references Departments(DeptID))
 --12.	Insert five records into the Departments table using INSERT INTO SELECT from another table.
+insert into employees(employee)
+select deptName
+from Departments
+where deptName = 'Marketing'
 --13.	Write a query that updates the Department of all employees where Salary > 5000 to 'Management'.
---14.	Write a query to remove all records from the Employees table without removing its structure.
+Update departments
+set department = 'Management'
+where salary > 5000
+--14.	Write a query to remove all records from the Employees table without removing its structure
+truncate table employees
+select * from employees
 --15.	Explain the difference between VARCHAR and NVARCHAR when creating tables.
+--varchar = not unicode, it stores 1 byte per character(includes english)
+--nvarchar = unicode characters, it stores 2 bytes per character (arabic, chinese, symbols).
 --16.	Modify an existing column Salary to change its data type to FLOAT.
+alter table employee
+alter column salary float
 --17.	Drop the column Department from the Employees table using ALTER TABLE.
---18.	Use SSMS graphical tools to modify the Employees table by adding a new column JoinDate (DATE). Take a screenshot.
+alter table Employee
+drop column department
+--18.	Use SSMS graphical tools to modify the Employees table by adding a new column JoinDate (DATE). Take a screenshot. done!
 --19.	Create a temporary table and insert two records into it.
+create table #temp_table (id int, name varchar(10), age int)
 --20.	Write a query to remove the Departments table completely from the database.
-
+drop table departments
 --🟠Hard-level task
 --21.Write a script that creates a Customers table with a CHECK constraint ensuring Age > 18.
 create table customers (ID int, name varchar(15), age int, constraint Ck_age check (age>18))
