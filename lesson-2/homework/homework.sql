@@ -72,9 +72,11 @@ drop table departments
 create table customers (ID int, name varchar(15), age int, constraint Ck_age check (age>18))
 insert into customers values (1, 'Bill', 20), (2, 'John', 19), (3, 'Ann', 24), (4, 'Kate', 23), (5, 'Alex', 25)
 
---22.Write a query to delete all employees who have not received a salary increase in the last two years. GO BACK AND COMPLETE
---create table employees (empID int, name varchar(15), salary_increated bool)
---insert into employees values (1, 'Bill', 1), (2, 'John', 2), (3, 'Ann', FALSE), (4, 'Kate', FALSE), (5, 'Alex', TRUE)
+--22.Write a query to delete all employees who have not received a salary increase in the last two years.
+create table employees (empID int, name varchar(15), salary_increated bool)
+insert into employees values (1, 'Bill', TRUE), (2, 'John', FALSE), (3, 'Ann', FALSE), (4, 'Kate', FALSE), (5, 'Alex', TRUE)
+delete from employees
+where salary_increased = FALSE
 
 --23.Create a stored procedure that inserts a new employee record into the Employees table.
 create procedure spGetEmployees
@@ -93,9 +95,11 @@ from employees
 
 --25.Write a query to insert multiple rows using MERGE INTO from another table
 --26.Drop the CompanyDB database and recreate it using a script.
+drop database CompanyDB
+create database CompanyDB
+use CompanyDB
 --27.Use SSMS graphical tools to rename the Employees table to StaffMembers. Take a screenshot. done!
 --28.Explain the difference between CASCADE DELETE and CASCADE UPDATE with an example.
 --29.Write a query to reset the IDENTITY column seed of Employees after deleting all records.
-
 --30.Write a query that creates a table with both PRIMARY KEY and UNIQUE constraints on different columns
 create table consts (ID int primary key, name varchar(20) unique, age int)
