@@ -66,6 +66,7 @@ drop column department
 create table #temp_table (id int, name varchar(10), age int)
 --20.	Write a query to remove the Departments table completely from the database.
 drop table departments
+	
 --🟠Hard-level task
 --21.Write a script that creates a Customers table with a CHECK constraint ensuring Age > 18.
 create table customers (ID int, name varchar(15), age int, constraint Ck_age check (age>18))
