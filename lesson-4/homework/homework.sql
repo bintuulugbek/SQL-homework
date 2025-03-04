@@ -91,13 +91,11 @@ where email like '%@gmail.com'
 select * from employee
 where salary > all (select salary from employee where department = 'Sales')
 --28. Use ORDER BY with OFFSET-FETCH to show employees with the highest salaries, displaying 10 employees at a time (pagination).
------------------------------------------------------GO BACK
-----select * from Employees
-----order by age desc
-----offset 10 rows
-----fetch next 20 rows only
-
---29. Write a query that filters the Orders table for orders placed in the last 30 days using BETWEEN and CURRENT_DATE.  BACK
+select * from employee
+order by salary desc 
+offset 0 rows
+fetch next 10 rows only
+--29. Write a query that filters the Orders table for orders placed in the last 30 days using BETWEEN and CURRENT_DATE. 
 --30. Use ANY with a subquery to select all employees who earn more than the average salary for their department.  BACK
 
 
