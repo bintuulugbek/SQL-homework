@@ -96,7 +96,10 @@ order by salary desc
 offset 0 rows
 fetch next 10 rows only
 --29. Write a query that filters the Orders table for orders placed in the last 30 days using BETWEEN and CURRENT_DATE. 
---30. Use ANY with a subquery to select all employees who earn more than the average salary for their department.  BACK
+--30. Use ANY with a subquery to select all employees who earn more than the average salary for their department.  
+select * from Employees emps 
+where salary > any (select avg(salary) avg_salary from Employees as avg_sal where avg_sal.DepartmentID = emps.DepartmentID group by DepartmentID)
+
 
 
 
