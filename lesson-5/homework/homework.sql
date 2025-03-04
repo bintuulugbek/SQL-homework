@@ -36,10 +36,10 @@ select
 		else 'Low'
 	end as type
 from employee
---8. Write a query to filter Employees by Department and group them by Country.
----------------------------------------------------------BACK
+--8. Write a query to filter Employees by Department and group them by Country. no condition here
 --9. Use GROUP BY to find the number of products (ProductID) in each Category.
-----------------------------------------------------------BACK
+select category count(productID) from products
+group by category
 --10. Use IIF to create a column that shows 'Yes' if Stock > 100, and 'No' otherwise.
 select iif(stock > 100, 'Yes', 'No') from example_table
 
@@ -90,11 +90,7 @@ select * from EmployeeProjects
 --21. Write a query that uses UNION ALL to combine two tables, Sales and Returns, and calculate the total sales and returns for each product.
 select sale_amount from sales
 union all
-select return_amount from returns                  ------------------------------------BACK
-
-select * from sales
-select * from returns
-
+select return_amount from returns                 
 --22. Use INTERSECT to show products that are common between Products and DiscontinuedProducts tables.
 select productName from Products
 intersect
