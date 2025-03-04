@@ -78,7 +78,9 @@ select coalesce(first_name, '') + ' ' + coalesce(last_name, '') as FullName from
 --23. Write a query to select the distinct Category, ProductName, and Price for products that are priced above $50, using DISTINCT on three columns.
 select distinct category, product_name, price from products where price > 50
 --24. Write a query that selects products whose Price is within 10% of the average price in the Products table.
------------------------------------------------------GO BACK
+select product_name
+from products
+where price between (select avg(salary) * 0.9 from employee) and (select avg(salary) * 1.1 from employee)
 --25. Use WHERE clause to filter for employees whose Age is less than 30 and who work in either the 'HR' or 'IT' department.
 select * from employees
 where age < 30 and (department = 'HR' or departmenat = 'IT')
@@ -86,7 +88,8 @@ where age < 30 and (department = 'HR' or departmenat = 'IT')
 select * from customers
 where email like '%@gmail.com'
 --27. Write a query that uses the ALL operator to find employees whose salary is greater than all employees in the 'Sales' department.
------------------------------------------------------GO BACK
+select * from employee
+where salary > all (select salary from employee where department = 'Sales')
 --28. Use ORDER BY with OFFSET-FETCH to show employees with the highest salaries, displaying 10 employees at a time (pagination).
 -----------------------------------------------------GO BACK
 ----select * from Employees
