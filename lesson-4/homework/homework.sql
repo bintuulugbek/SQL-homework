@@ -63,7 +63,8 @@ where product_name like '%e%'
 select * from employees
 where department in ('HR','IT','Finance')
 --19. Write a query that uses the ANY operator to find employees who earn more than the average salary of all employees.
-----------------------------------------------GO BACK, UNFINISHED
+select name from employee
+where salary > any (select avg(salary) from employee)
 --20. Use ORDER BY to display a list of customers ordered by City in ascending and PostalCode in descending order.
 select * from customers
 order by city asc, postcal_code desc
