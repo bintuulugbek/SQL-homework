@@ -66,10 +66,24 @@ having avg(price) > 100
 --## 🔴 Hard-Level Tasks (10)
 
 --21. Write a query that shows the average (AVG) sales for each product category, and then uses HAVING to filter categories with an average sales amount greater than 200.
+select category, avg(sales) from product
+group by category
+having avg(sales) > 200
 --22. Write a query to calculate the total (SUM) sales for each employee, then filter the results using HAVING to include only employees with total sales over 5000.
+select employee, sum(sales) total_sale from employee
+group by employee
+having sum(sales) > 5000
 --23. Write a query to find the total (SUM) and average (AVG) salary of employees grouped by department, and use HAVING to include only departments with an average salary greater than 6000.
+select department, sum(salary) total_sale, avg(salary) avg_salary from employees
+group by department
+having avg_salary > 6000
 --24. Write a query that finds the maximum (MAX) and minimum (MIN) order value for each customer, and then applies HAVING to exclude customers with an order value less than 50.
+select customer, min(order) min_order, max(order) max_order from customers
+group by customer
+having min(order) >= 50
+select * from employees
 --25. Write a query that calculates the total sales (SUM) and counts distinct products sold in each Region, and then applies HAVING to filter regions with more than 10 products sold.
+select * from sales
 --26. Write a query to find the MIN and MAX order quantity per product, and then use GROUP BY to group the results by ProductCategory.
 --27. Write a query to pivot the Sales table by Year and show the sum of SalesAmount for each Region.
 --28. Write a query to unpivot the Sales table, converting Q1, Q2, Q3, and Q4 columns into rows showing total sales per quarter.
