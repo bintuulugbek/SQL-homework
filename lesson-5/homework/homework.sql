@@ -114,7 +114,7 @@ select customer_id
 from Invoices;
 
 --26. Write a query that uses GROUP BY on three columns: CustomerID, ProductID, and Region, and calculates the total sales.
-create table Calc (customerID int, ProductID int, region varchar(20), sale int)             --------------------BACK
+select * from employees as emps where salary > any(select avg(salary) avg_salary from employees as avg_sal where avg_sal.DepartmentID = emps.DepartmentID group by DepartmentID)
 
 --27. Write a query that uses CASE to apply multiple conditions and returns a Discount column based on the Quantity purchased.
 select 
