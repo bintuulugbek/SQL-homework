@@ -36,7 +36,7 @@ select
 		else 'Low'
 	end as type
 from employee
---8. Write a query to filter Employees by Department and group them by Country. no condition here
+--8. Write a query to filter Employees by Department and group them by Country. the question is not full
 --9. Use GROUP BY to find the number of products (ProductID) in each Category.
 select category count(productID) from products
 group by category
