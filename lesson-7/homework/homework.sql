@@ -56,12 +56,19 @@ select category avg(price) from products
 group by category  --I added category
 having avg(price) > 100
 --17. Write a query to count how many products have sales above 100 units using COUNT(DISTINCT ProductID).
-
+select category, count(distinct productID) from products
+group by category
+having count(distinct productID) > 100                                    
 --18. Write a query that calculates the total sales for each year in the Sales table, and use GROUP BY to group them.
+select year, sum(sales) total_sales from sales
+group by year 
 --19. Write a query that uses COUNT to show the number of customers who placed orders in each region.
+select region, count(customer) countCustomer from orders
+group by region
 --20. Write a query that applies the HAVING clause to filter out Departments with total salary expenses greater than 100,000.
-
------
+select department, sum(salary) total_salary from employees
+group by department
+having sum(salary) > 100000
 
 --## 🔴 Hard-Level Tasks (10)
 
@@ -83,9 +90,16 @@ group by customer
 having min(order) >= 50
 select * from employees
 --25. Write a query that calculates the total sales (SUM) and counts distinct products sold in each Region, and then applies HAVING to filter regions with more than 10 products sold.
-select * from sales
+select region, sum(sales) total_sales, count(distinct product) from sales
+group by region
+having count(distinct product) > 10
 --26. Write a query to find the MIN and MAX order quantity per product, and then use GROUP BY to group the results by ProductCategory.
---27. Write a query to pivot the Sales table by Year and show the sum of SalesAmount for each Region.
+select productCategory, max(order_quantity), min(order_quantity) from orders
+group by productCategory
+--27. Write a query to pivot the Sales table by Year and show the sum of SalesAmount for each Region. 
 --28. Write a query to unpivot the Sales table, converting Q1, Q2, Q3, and Q4 columns into rows showing total sales per quarter.
 --29. Write a query to count the number of orders per product, filter those with more than 50 orders using HAVING, and group them by ProductCategory.
+select productCategory, count(orders) order_count from orders
+group by productCategory
+having count(orders) > 50
 --30. Write a query to pivot the EmployeeSales table, displaying the total sales per employee for each quarter (Q1, Q2, Q3, Q4).
