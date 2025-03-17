@@ -116,14 +116,18 @@ select trim(' SQL ')
 --8. How would you calculate the number of months between '2023-05-01' and '2025-02-03' using Datepart()?
 --9. Write a query to find the position of the substring 'SQL' from the end of the string 'Learn SQL Server' using Reverse() and Charindex().
 --10. Use String_split() to split a comma-separated string 'apple,orange,banana' and return each word in a separate row.
+select value from string_split('apple,orange,banana', ',')
 --11. How would you find the number of days from '2025-01-01' to the current date using Datediff()?
+select datediff(day, '2025-01-01', getDate())
 --12. Write a SQL query that returns the first 4 characters of the string 'Data Science' using Left().
+select left('Data Science', 4)
 --13. How can you calculate the square root of 225 and round it to the nearest whole number using Sqrt() and Ceiling()?
 --14. Write a query that concatenates two strings with a pipe ('|') separator using Concat_ws().
 --15. Use Patindex() to find the position of the first occurrence of any digit in the string 'abc123xyz'.
 --16. How would you find the second occurrence of the substring 'SQL' in the string 'SQL Server SQL' using Charindex()?
 --17. Write a SQL query to get the year from the current date using DatePart().
+select datePart(year, getDate())
 --18. How do you subtract 100 days from the current date using Dateadd()?
 --19. Use DateName() to extract the day of the week from the date '2025-02-03'.
+select dateName(day, '2025-02-03')
 --20. Write a query to get the square of a number using the Power() function and return it in the result set.
-
