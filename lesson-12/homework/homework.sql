@@ -5,7 +5,6 @@
 --Bahor Eshmirzayeva
 
 --## Easy Questions (20)
-
 --1. What is the result of Ascii('A') in SQL?
 select ascii('A') -- output is 65
 --2. Write a SQL query to get the length of the string 'Hello World' using Len().
@@ -63,11 +62,9 @@ select char(65)
 --3. Write a query to find the position of the substring 'SQL' in the string 'Learn SQL basics'.
 select charIndex('SQL', 'Learn SQL basics')
 --4. Use Concat_ws() to join 'SQL' and 'Server' with a comma between them.
-select concat_ws(' ', 'SQL', 'Server')
+select concat_ws(',', 'SQL', 'Server')
 --5. How would you replace the substring 'test' with 'exam' using Stuff()?
-
-----------------BACK HERE
-
+select stuff('test string', charindex('test', 'test string'), len('test'), 'exam');
 --6. Write a SQL query to get the square of 7 using Square().
 select square(7)
 --7. How do you get the first 5 characters from the string 'International'?
@@ -87,7 +84,10 @@ select SYSDATETIME()
 --14. What does the function Sysdatetime() return in SQL?
 -- it returns the current date and time
 --15. How would you find the next occurrence of 'Wednesday' from today's date using Dateadd()?
-  -------------------------------BACK
+select case
+			when datepart(weekday, getdate()) < datepart(weekday,'2024-03-13') then dateadd(day, datepart(weekday,'2024-03-13') - datepart(weekday,getdate()), getdate())
+			else dateadd(day, 7 + datepart(weekday,'2024-03-13') - datepart(weekday,'2025-03-20'),'2025-03-20')
+		end
 --16. What is the difference between Getdate() and Getutcdate()?\
 --Getdate() gives the current date, servers local time zone and getutsdate() gives the universal time of the earth
 --17. Use Abs() to get the absolute value of -15 in SQL.
@@ -101,11 +101,14 @@ select datename(day, '2025-02-03')
 
 --## Difficult Questions (20)
 --1. Write a query to reverse the string 'SQL Server' and then remove the spaces.
---------------------------BACK here again
+select replace(reverse('SQL Server'), ' ', '')
 --2. Write a query that uses String_agg() to concatenate all the values in the 'City' column of a table into a single string, separated by commas.
 select string_agg(city, ',') from tableName
 --3. Write a SQL query that checks if a string contains both 'SQL' and 'Server' using Charindex().
-select charIndex()   -------------------------BACK HERE AGAIN
+select case 
+			when charIndex('Server', 'Hello Im SQL Server') > 0 and charIndex('SQL', 'Hello Im SQL Server') > 0 then 'both exist'
+			else 'Both dont exist here'
+		end
 --4. How would you use Power() to calculate the cube of 5?
 select power(5, 3)
 --5. Write a query that splits a string 'apple;orange;banana' by the semicolon and returns each word as a separate row.
@@ -113,8 +116,15 @@ select value from string_split('apple;orange;banana', ';')
 --6. Use Trim() to remove both leading and trailing spaces from the string ' SQL '.
 select trim(' SQL ')
 --7. Write a SQL query to calculate the difference in hours between two timestamps using Datediff().
---8. How would you calculate the number of months between '2023-05-01' and '2025-02-03' using Datepart()?
+select datediff(hour, '2025-03-05', '2025-03-26') 
+--8. How would you calculate the number of months between '2023-05-01' and '2023-05-01' using Datepart()?
+select abs(
+			(datepart(year, '2023-05-01') - datepart(year, '2023-05-01')) * 12 +
+			datepart(month, '2023-05-01') - datepart(month, '2023-05-01')
+)
 --9. Write a query to find the position of the substring 'SQL' from the end of the string 'Learn SQL Server' using Reverse() and Charindex().
+select charIndex(reverse('SQL'), reverse('Learn SQL Server')
+
 --10. Use String_split() to split a comma-separated string 'apple,orange,banana' and return each word in a separate row.
 select value from string_split('apple,orange,banana', ',')
 --11. How would you find the number of days from '2025-01-01' to the current date using Datediff()?
@@ -122,12 +132,20 @@ select datediff(day, '2025-01-01', getDate())
 --12. Write a SQL query that returns the first 4 characters of the string 'Data Science' using Left().
 select left('Data Science', 4)
 --13. How can you calculate the square root of 225 and round it to the nearest whole number using Sqrt() and Ceiling()?
+select ceiling(sqrt(225))
 --14. Write a query that concatenates two strings with a pipe ('|') separator using Concat_ws().
+select concat_ws('|', 'Hello', 'World')
 --15. Use Patindex() to find the position of the first occurrence of any digit in the string 'abc123xyz'.
+select patIndex('%[0-9]%', 'abc123xyz')
 --16. How would you find the second occurrence of the substring 'SQL' in the string 'SQL Server SQL' using Charindex()?
+select charIndex('SQL', 'SQL Server SQL', charIndex('SQL', 'SQL Server SQL') + 1)
 --17. Write a SQL query to get the year from the current date using DatePart().
 select datePart(year, getDate())
 --18. How do you subtract 100 days from the current date using Dateadd()?
+select dateadd(day, -100, getdate())
 --19. Use DateName() to extract the day of the week from the date '2025-02-03'.
 select dateName(day, '2025-02-03')
 --20. Write a query to get the square of a number using the Power() function and return it in the result set.
+select power(4, 2)
+
+
