@@ -69,7 +69,6 @@ select replace('SQL Server is great', ' ', '-')
 select replace(space(3), ' ', '0') + '42'
 --2️8️ Find Longest Word Length → Longest word in 'SQL is fast and efficient'.  
 select value from string_split('SQL is fast and efficient', ' ')
-_-----------------------------BACK
 --2️9️ Remove First Word → Remove first word from 'Error: Connection failed'. Output: : Connection failed'
 SELECT trim(substring('Error: Connection failed. Output: : Connection failed', charindex(' ', 'Error: Connection failed. Output: : Connection failed') + 1, len('Error: Connection failed. Output: : Connection failed'))) as Result;
 --3️0️ Find Time Difference → Minutes between '08:15:00' & '09:45:00'.  
