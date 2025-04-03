@@ -82,14 +82,6 @@ with cte as (
 select categoryID, sum(sales_amount) total_revenue from cte join Products on Products.ProductID = cte.productID
 group by CategoryID
 --14.Find the top 3 highest-paid employees per department. (Derived Table)
-select * from Employees
-select * from Departments
-
-
-
-select distinct departmentID from Employees
-order by salary desc
-
 select departmentID, salary from Employees
 group by departmentID, salary
 order by departmentID, salary desc
